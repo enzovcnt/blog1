@@ -14,7 +14,7 @@ class Comment
 
     private string $content;
 
-    private string $post_id;
+    private string $burger_id;
 
     public function getId(): int
     {
@@ -33,12 +33,12 @@ class Comment
 
     public function getPostId(): string
     {
-        return $this->post_id;
+        return $this->burger_id;
     }
 
-    public function setPostId(string $post_id): void
+    public function setPostId(string $burger_id): void
     {
-        $this->post_id = $post_id;
+        $this->burger_id = $burger_id;
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BurgerRepository;
+use App\Repository\CommentRepository;
 use Attributes\TargetRepository;
 use Core\Attributes\Table;
 
@@ -39,5 +40,11 @@ class Burger
     public function setContent(string $content): void
     {
         $this->content = $content;
+    }
+
+    public function getComments():array
+    {
+        $commentRepo = new CommentRepository();
+        return $commentRepo->findAllByPost($this);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Post;
+use App\Entity\Burger;
 use Attributes\DefaultEntity;
 use Core\Controller\Controller;
 use Core\Response\Response;
@@ -16,26 +16,26 @@ class CommentController extends Controller
     {
          $content = null;
          $id=null;
-         if(!empty($_POST['content']) && !empty($_POST['postId']) & ctype_digit($_POST['postId']))
+         if(!empty($_POST['content']) && !empty($_POST['burgerId']) & ctype_digit($_POST['burgerId']))
          {
-             $id = $_POST['postId'];
+             $id = $_POST['burgerId'];
              $content = $_POST['content'];
          }
          if(!$id){return $this->redirect();}
 
-         $post = $this->getRepository(Post::class)->find($id);
+         $burger = $this->getRepository(Burger::class)->find($id);
 
 
-         if($post && $content)
+         if($burger && $content)
          {
              $comment = new Comment();
              $comment->setContent($content);
-             $comment->setPostId($post->getId());
+             $comment->setPostId($burger->getId());
              $this->getRepository(Comment::class)->save($comment);
          }
 
          return $this->redirect([
-             "type"=>"post",
+             "type"=>"burger",
              "action"=>"show",
              "id"=>$id
          ]);
@@ -54,14 +54,14 @@ class CommentController extends Controller
         if(!$comment){   return $this->redirect();}
 
 
-        $postId = $comment->getPostId();
+        $burgerId = $comment->getPostId();
         $this->getRepository()->delete($comment);
 
 
         return $this->redirect([
-            "type"=>"post",
+            "type"=>"burger",
             "action"=>"show",
-            "id"=>$postId
+            "id"=>$burgerId
         ]);
 
 
@@ -87,7 +87,7 @@ class CommentController extends Controller
             $comment->setContent($content);
             $this->getRepository()->update($comment);
             return $this->redirect([
-                "type"=>"post",
+                "type"=>"burger",
                 "action"=>"show",
                 "id"=>$comment->getPostId()
             ]);

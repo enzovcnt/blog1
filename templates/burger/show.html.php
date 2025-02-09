@@ -12,27 +12,27 @@
 
 </div>
 
-<!--<div class="border-dark border p-5">-->
-<!--    --><?php //foreach ($post->getComments() as $comment) : ?>
-<!---->
-<!--    <div class="border border-dark">-->
-<!--        <p><strong>--><?php //= $comment->getContent() ?><!--</strong></p>-->
-<!--        <a href="?type=comment&action=delete&id=--><?php //= $comment->getId() ?><!--" class="btn btn-danger" ><strong>X</strong></a>-->
-<!--        <a href="?type=comment&action=update&id=--><?php //= $comment->getId() ?><!--" class="btn btn-warning" ><strong>Edit</strong></a>-->
-<!---->
-<!--    </div>-->
-<!---->
-<!---->
-<!--    --><?php //endforeach ;?>
-<!---->
-<!--</div>-->
-<!---->
-<!---->
-<!--<form method="post" action="?type=comment&action=add" class="form form-control">-->
-<!--    <input class="form-control" type="text" name="content"  placeholder="comment">-->
-<!--    <input type="hidden" name="postId" value="--><?php //= $post->getId() ?><!--">-->
-<!--    <button class="btn btn-success" type="submit">Post</button>-->
-<!--</form>-->
-<!---->
+<div class="border-dark border p-5">
+    <?php foreach ($burger->getComments() as $comment) : ?>
+
+    <div class="border border-dark">
+        <p><strong><?= $comment->getContent() ?></strong></p>
+        <a href="?type=comment&action=delete&id=<?= $comment->getId() ?>" class="btn btn-danger" ><strong>X</strong></a>
+        <a href="?type=comment&action=update&id=<?= $comment->getId() ?>" class="btn btn-warning" ><strong>Edit</strong></a>
+
+    </div>
+
+
+    <?php endforeach ;?>
+
+</div>
+
+
+<form method="post" action="?type=comment&action=add" class="form form-control">
+    <input class="form-control" type="text" name="content"  placeholder="comment">
+    <input type="hidden" name="postId" value="<?= $burger->getId() ?>">
+    <button class="btn btn-success" type="submit">Post</button>
+</form>
+
 
 

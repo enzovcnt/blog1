@@ -69,7 +69,7 @@ class SecurityController extends Controller
             $success = $registeredUser->logIn($password);
 
             if(!$success){return $this->redirect(["type"=>"security","action"=>"login"]);}
-            else{return $this->redirect(["type"=>"post", "action"=>"index"]);}
+            else{return $this->redirect(["type"=>"burger", "action"=>"index"]);}
 
 
         }
@@ -85,7 +85,7 @@ class SecurityController extends Controller
         $user = $this->getUser();
         if($user){$user->logOut();}
 
-        return $this->redirect(["type"=>"post", "action"=>"index"]);
+        return $this->redirect(["type"=>"security", "action"=>"login"]);
     }
 
 }

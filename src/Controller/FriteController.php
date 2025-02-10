@@ -2,23 +2,23 @@
 
 namespace App\Controller;
 
-use App\Entity\Burger;
+use App\Entity\Frite;
 use Attributes\DefaultEntity;
 use Core\Controller\Controller;
 use Core\Response\Response;
 
 
-#[DefaultEntity(entityName: Burger::class)]
-class BurgerController extends Controller
+#[DefaultEntity(entityName: Frite::class)]
+class FriteController extends Controller
 {
 
     public function index(): Response
     {
 
-        $theBurgers =  $this->getRepository()->findAll();
+        $theFrites =  $this->getRepository()->findAll();
 
-        return $this->render('burger/index', [
-            'burgers' => $theBurgers,
+        return $this->render('frite/index', [
+            'frites' => $theFrites,
         ]);
     }
 
@@ -35,7 +35,7 @@ class BurgerController extends Controller
         if(!$id)
         {
             return $this->redirect([
-                "type"=>"burger",
+                "type"=>"frite",
                 "action"=>"index"
             ]);
         }
@@ -48,8 +48,8 @@ class BurgerController extends Controller
         }
 
 
-        return $this->render('burger/show', [
-            'burger' => $burger
+        return $this->render('frite/show', [
+            'frite' => $burger
         ]);
     }
 
@@ -63,20 +63,20 @@ class BurgerController extends Controller
         }
         if ($title && $content)
         {
-            $burger = new Burger();
-            $burger->setTitle($title);
-            $burger->setContent($content);
-            $id = $this->getRepository()->save($burger);
+            $frite = new Frite();
+            $frite->setTitle($title);
+            $frite->setContent($content);
+            $id = $this->getRepository()->save($frite);
 
             return $this->redirect([
-                "type"=>"burger",
+                "type"=>"frite",
                 "action"=>"show",
                 "id" => $id
             ]);
         }
 
 
-        return $this->render('burger/create', []);
+        return $this->render('frite/create', []);
     }
 
 
@@ -91,7 +91,7 @@ class BurgerController extends Controller
         if(!$id)
         {
             return $this->redirect([
-                "type"=>"burger",
+                "type"=>"frite",
                 "action"=>"index"
             ]);
         }
@@ -118,14 +118,14 @@ class BurgerController extends Controller
         if(!$id)
         {
             return $this->redirect([
-                "type"=>"burger",
+                "type"=>"frite",
                 "action"=>"index"
             ]);
         }
 
-        $burger = $this->getRepository()->find($id);
+        $frite = $this->getRepository()->find($id);
 
-        if(!$burger)
+        if(!$frite)
         {
             return $this->redirect();
         }
@@ -139,21 +139,21 @@ class BurgerController extends Controller
         if ($title && $content)
         {
 
-            $burger->setTitle($title);
-            $burger->setContent($content);
-            $updatedBurger = $this->getRepository()->update($burger);
+            $frite->setTitle($title);
+            $frite->setContent($content);
+            $updatedFrite = $this->getRepository()->update($frite);
 
             return $this->redirect([
-                "type"=>"burger",
+                "type"=>"frite",
                 "action"=>"show",
-                "id" => $updatedBurger->getId()
+                "id" => $updatedFrite->getId()
             ]);
         }
 
 
 
-        return $this->render('burger/update', [
-            'burger' => $burger,
+        return $this->render('frite/update', [
+            'frite' => $frite,
         ]);
     }
 

@@ -31,6 +31,9 @@ use Core\Session\Session;
                     <a class="nav-link" href="?type=burger&action=create">New Burger</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="?type=frite&action=create">New frite</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="?type=security&action=login">Sign In</a>
                 </li>
                 <li class="nav-item">
